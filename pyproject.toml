@@ -1,0 +1,60 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "x402-python"
+version = "0.1.0"
+description = "Minimal Python client for the x402 HTTP payment protocol v2 (Linux Foundation)."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [
+    { name = "cryptomotifs", email = "amrinder847@gmail.com" }
+]
+keywords = ["x402", "http-402", "micropayments", "web3", "erc-3009", "payments"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Typing :: Typed",
+]
+dependencies = [
+    "requests>=2.28",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7",
+    "pytest-cov>=4",
+    "responses>=0.23",
+    "mypy>=1.5",
+    "ruff>=0.3",
+]
+
+[project.urls]
+Homepage = "https://github.com/cryptomotifs/x402-python"
+Repository = "https://github.com/cryptomotifs/x402-python"
+Issues = "https://github.com/cryptomotifs/x402-python/issues"
+"Reference demo" = "https://cipher-x402.vercel.app"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"x402_python" = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra --cov=x402_python --cov-report=term-missing --cov-fail-under=80"
+
+[tool.mypy]
+python_version = "3.9"
+strict = true
